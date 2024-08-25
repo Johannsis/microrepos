@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+dist
+coverage
+*.md
+tailwind.config.ts
+postcss.config.mjs
+*/__mocks__/*

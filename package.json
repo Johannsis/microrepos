@@ -2,22 +2,56 @@
   "name": "microrepos",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint:fix": "cd packages/portfolio eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "prettier": "prettier . -w",
+    "type-check": "tsc --noEmit",
+    "start:portfolio:dev": "cd packages/portfolio && bun dev",
+    "start:portfolio": "cd packages/portfolio && bun start"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^14.2.5",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.4",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "bun": "^1.1.26",
+    "bun-utilities": "0.2.1",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-perfectionist": "^3.1.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-compiler": "^0.0.0-experimental-72f06b2-20240822",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
     "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "turbo": "^2.0.14",
     "typescript": "^5.4.5"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.10.0"
   },
-  "packageManager": "bun@1.1.12",
+  "packageManager": "bun@1.1.26",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "packages/*",
+    "rigs/eslint-config",
+    "rigs/typescript-config"
   ]
 }
