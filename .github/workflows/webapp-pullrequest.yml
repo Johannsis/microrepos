@@ -3,7 +3,7 @@ name: Pull Request
 on:
   push:
     branches:
-      - '*'
+      - '!main'
   pull_request:
   workflow_dispatch:
 
@@ -26,6 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: bun install
+
       - name: Build
         run: bun run build
 
@@ -43,7 +44,10 @@ jobs:
         with:
           node-version: 20
 
+      - uses: oven-sh/setup-bun@v2
+
       - name: Install dependencies
         run: bun install
+
       - name: Check lint
         run: bun run lint
